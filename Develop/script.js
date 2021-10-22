@@ -15,52 +15,66 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-
 }
 
 
-function generatePassword(){
+function generatePassword() {
   var passwordLength = setPasswordLength();
   var specialCharacters = specialCharactersRequired();
   var numericCharacters = numericCharactersRequired();
   var lowerCase = lowerCaseRequired();
   var upperCase = upperCaseRequired();
-  
+
+  //logics
+  let mainArr = []
+  if (specialCharacters)
+    mainArr.concat(['!', '@', '#', '$', '%', '&', '*'])
+
+  if (numericCharacters)
+    mainArr.concat(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'])
+
+  if (lowerCase)
+    mainArr.concat(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"])
+
+  if (upperCase)
+    mainArr.concat(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"])
+
 }
 
-function setPasswordLength(){
+
+function setPasswordLength() {
   var passLength = prompt("How many characters would you like your password to contain?");
 
   let num = parseInt(passLength)
 
-  if(num < 8){
+  if (num < 8) {
     alert("Password must contain minimum 8 characters")
   }
 
-  if(num > 128){
+  if (num > 128) {
     alert("Password must be less than 129 characters")
   }
- 
-  return num 
+
+  return num
 }
 
 
-function specialCharactersRequired(){
+function specialCharactersRequired() {
   var result = confirm('Click OK if you want to include special characters')
   return result
 }
 
-function numericCharactersRequired(){
+function numericCharactersRequired() {
   var result = confirm('Click OK if you want to include numeric characters')
   return result
 }
 
-function lowerCaseRequired(){
+function lowerCaseRequired() {
   var result = confirm('Click OK if you want to include lower case')
   return result
 }
 
-function upperCaseRequired(){
+function upperCaseRequired() {
   var result = confirm('Click OK if you want to include upper case')
   return result
 }
