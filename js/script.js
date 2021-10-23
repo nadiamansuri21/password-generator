@@ -1,20 +1,10 @@
-// Assignment code here
-
-
-// Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
-
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+  if(password){
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+  }
 }
 
 
@@ -25,9 +15,6 @@ function generatePassword() {
   var lowerCase = lowerCaseRequired();
   var upperCase = upperCaseRequired();
 
-  console.log(specialCharacters)
-
-  //logics
   let mainArr = []
   if (specialCharacters)
     mainArr = mainArr.concat(['!', '@', '#', '$', '%', '&', '*'])
@@ -43,20 +30,24 @@ function generatePassword() {
 
   let finalPass = ''
 
+  if(mainArr.length === 0){
+    alert('Please select from any one criteria.')
+    return
+  }
+
   for (let i = 0; i < passwordLength; i++) {
     let randomVal = Math.random() 
     let randomIndex = randomVal * mainArr.length
     let finalIndex = Math.floor(randomIndex)
     finalPass += mainArr[finalIndex]
   }
-  
+
   return finalPass
 }
 
 
 function setPasswordLength() {
   var passLength = prompt("How many characters would you like your password to contain?");
-
   let num = parseInt(passLength)
 
   if (num < 8) {
@@ -72,24 +63,30 @@ function setPasswordLength() {
 
 
 function specialCharactersRequired() {
-  var result = confirm('Click OK if you want to include special characters')
-  return result
+  return confirm('Click OK if you want to include special characters')
 }
 
 function numericCharactersRequired() {
-  var result = confirm('Click OK if you want to include numeric characters')
-  return result
+  return confirm('Click OK if you want to include numeric characters')
 }
 
 function lowerCaseRequired() {
-  var result = confirm('Click OK if you want to include lower case')
-  return result
+  return confirm('Click OK if you want to include lower case')
 }
 
 function upperCaseRequired() {
-  var result = confirm('Click OK if you want to include upper case')
-  return result
+  return confirm('Click OK if you want to include upper case')
 }
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
 
 
 
