@@ -7,7 +7,6 @@ function writePassword() {
   }
 }
 
-
 function generatePassword() {
   var passwordLength = setPasswordLength();
   var specialCharacters = specialCharactersRequired();
@@ -45,7 +44,6 @@ function generatePassword() {
   return finalPass
 }
 
-
 function setPasswordLength() {
   var passLength = prompt("How many characters would you like your password to contain?");
   let num = parseInt(passLength)
@@ -60,7 +58,6 @@ function setPasswordLength() {
 
   return num
 }
-
 
 function specialCharactersRequired() {
   return confirm('Click OK if you want to include special characters')
@@ -80,7 +77,6 @@ function upperCaseRequired() {
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
